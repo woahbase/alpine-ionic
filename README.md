@@ -60,7 +60,7 @@ in your terminal to see your own `PUID`/`PGID` values.)
 Before you run..
 
 * Mount the project directory (where `package.json` is) at
-  `/home/alpine/project`. Mounts `PWD` by default.
+  `/home/alpine/project`. Mounts `$PWD/project` by default.
 
 * Ionic runs under the user `alpine`.
 
@@ -72,7 +72,7 @@ docker run --rm -it \
   --name docker_ionic --hostname ionic \
   -e PGID=1000 -e PUID=1000 \
   -c 256 -m 512m \
-  -v $PWD:/home/alpine/project \
+  -v $PWD/project:/home/alpine/project \
   -v /etc/localtime:/etc/localtime:ro \
   -v /etc/hosts:/etc/hosts:ro \
   -p 8100:8100 \
@@ -89,7 +89,7 @@ docker run --rm -it \
   -e PGID=1000 -e PUID=1000 \
   -c 256 -m 512m \
   -p 8100:8100 \
-  -v $PWD:/home/alpine/project \
+  -v $PWD/project:/home/alpine/project \
   woahbase/alpine-ionic:x86_64 \
   start
 ```
@@ -103,7 +103,7 @@ docker run --rm -it \
   -e PGID=1000 -e PUID=1000 \
   -c 256 -m 512m \
   -p 8100:8100 \
-  -v $PWD:/home/alpine/project \
+  -v $PWD/project:/home/alpine/project \
   -v /etc/localtime:/etc/localtime:ro \
   -v /etc/hosts:/etc/hosts:ro \
   woahbase/alpine-ionic:x86_64 \
@@ -121,7 +121,7 @@ docker run --rm -it \
   -e PGID=1000 -e PUID=1000 \
   -c 256 -m 512m \
   -p 8100:8100 \
-  -v $PWD:/home/alpine/project \
+  -v $PWD/project:/home/alpine/project \
   woahbase/alpine-ionic:x86_64 \
   start
 ```
