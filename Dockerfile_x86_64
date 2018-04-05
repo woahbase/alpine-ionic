@@ -1,0 +1,18 @@
+ARG ARCH=frommakefile
+ARG DOCKERSRC=frommakefile
+ARG USERNAME=frommakefile
+#
+FROM ${USERNAME}/${DOCKERSRC}:${ARCH}
+#
+ENV NODE_SASS_PLATFORM=alpine
+#
+RUN set -xe \
+    && npm install --unsafe-perm -g node-gyp ionic cordova \
+    && rm -rf /var/cache/apk/* /tmp/*
+#
+USER alpine
+WORKDIR /home/alpine/project/
+#
+EXPOSE 3000 8100 35729
+# VOLUME /home/alpine/project/ # specify at runtime
+ENTRYPOINT ["ionic"]
